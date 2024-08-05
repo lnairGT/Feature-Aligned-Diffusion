@@ -3,6 +3,8 @@ This repository contains code for _feature-aligned diffusion_ for generation of 
 
 For more details, please see our paper here: (insert link) - we show that feature-aligned diffusion leads to about 9% improvement in quality of the synthetic generations over baseline approaches.
 
+<img src="assets/Adipose.png" alt="generations" height=480/>
+
 ## Getting Started
 Install requirements using `pip install -r requirements.txt` and download the dataset used in this repository from [here](https://www.kaggle.com/datasets/user322312312/kather-texture-2016-image-tiles-5000-1). The following command will perform vanilla fine-tuning of a diffusion model. By default, we fine-tune a tiny stable diffusion model from HuggingFace [segmind/tiny-sd](https://huggingface.co/segmind/tiny-sd).
 ```
