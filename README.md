@@ -19,14 +19,14 @@ There are two key steps here:
 - Fine-tune the feature-aligned diffusion model using the expert model.
 
 ### Fine-tune an Expert Model
-By default, we use ResNet50 as our expert, and can be trained to perform classification on the dataset using the following command:
+By default, we use ResNet50 as our expert, pre-trained on ImageNet-1k. We fine-tune this model to perform classification on our dataset using the following command:
 ```
 python main.py \
     --config config.yml
 ```
 
 ### Fine-tune a Diffusion Model Using Feature-aligned Diffusion
-To fine-tune a diffusion model using the following command:
+To fine-tune a diffusion model, with the above expert, use the following command:
 ```
 python train_sd.py \
     --config config.yml \
