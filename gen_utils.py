@@ -46,6 +46,7 @@ def generate_img(
 
             ni = ni.clip(0, 1)
             mean = torch.mean(ni)
+            print(mean)
 
         images.append(ni)
 
