@@ -1,7 +1,7 @@
 # Improved Generation of Synthetic Imaging Data Using Feature-Aligned Diffusion
 This repository contains code for _feature-aligned diffusion_ for generation of synthetic imaging data, specifically, synthetic histological images of colorectal cancer. _Feature-aligned diffusion_ improves the quality of synthetic generations by aligning the intermediate features of the diffusion model to the output features of an "expert" model. The expert model in this case is trained to perform classification on the original dataset.
 
-For more details, please see our paper here: (insert link) - we show that feature-aligned diffusion leads to about *9% improvement* in quality of the synthetic generations over baseline approaches.
+For more details, please see our paper here: [TBD] - we show that feature-aligned diffusion leads to about *9% improvement* in quality of the synthetic generations over baseline approaches.
 
 <img src="assets/Adipose.png" alt="generations" height=150/>
 
@@ -44,3 +44,13 @@ Following are synthetic generations with feature-aligned diffusion compared to t
 
 ## Citation
 If you found this repository useful, please consider citing the following:
+```
+@inproceedings{
+nair2024improved,
+title={Improved Generation of Synthetic Imaging Data Using Feature-Aligned Diffusion},
+author={Lakshmi Nair},
+booktitle={International Workshop on Vision-Language Models for Biomedical Applications},
+year={2024},
+url={https://openreview.net/forum?id=C71rhsmCOA}
+}
+```
