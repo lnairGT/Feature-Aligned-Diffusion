@@ -63,7 +63,9 @@ def train(
             noisy_img = noise_scheduler.add_noise(img, noise, timestep)
             # Conditioned noise prediction with input class labels
             pred = model(noisy_img, timestep, label_names)
-            loss = loss_fn(pred, noise) + model.align_loss  # Predict noise
+            loss = loss_fn(pred, noise)
+            if hasattr(model, "align_loss"):
+                loss += model.align_loss  # Predict noise
 
             epoch_losses.append(loss.item())
             optimizer.zero_grad()
@@ -84,7 +86,8 @@ def train(
             )
         print(f"Loss at epoch {epoch + 1}: {avg_epoch_loss}")
         writer.add_scalar("Training Loss", avg_epoch_loss, epoch + 1)
-        writer.add_scalar("Alignment loss", model.feat_loss.item(), epoch + 1)
+        if hasattr(model, "align_loss"):
+            writer.add_scalar("Alignment loss", model.align_loss.item(), epoch + 1)
         lr_scheduler.step()
     
     print("Training complete.")
@@ -129,7 +132,7 @@ def main(args, cfg):
 
     if args.use_feature_alignment:
         model = FeatureAlignedDiffusion(
-            expert_ckpt="ckpts-grayscale/r50_expert.pt"
+            expert_ckpt="r50_expert.pt"
         )
     else:
         model = PreTrainedDiffusion()
@@ -157,6 +160,7 @@ def main(args, cfg):
         )
 
     # Load checkpoint before generations
+    print(f"Loading model checkpoint...")
     model = load_model(model, cfg["train_args"]["save_ckpt_name"])
 
     for gen_class in range(0, 7):
