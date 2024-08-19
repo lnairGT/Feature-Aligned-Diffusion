@@ -35,7 +35,7 @@ def test(model, device, test_loader):
     with torch.no_grad():
         for images, targets in test_loader:
             images, targets = images.to(device), targets.to(device)
-            outputs = model(images).squeeze()
+            outputs = model(images)
             test_loss += criterion(outputs, targets).sum().item()  # sum up batch loss
             pred = torch.argmax(outputs[:, :7], dim=-1)  # get the index of the max log-probability
             correct += pred.eq(targets.view_as(pred)).sum().item()
